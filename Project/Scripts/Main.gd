@@ -6,7 +6,7 @@ var score
 
 
 func _ready():
-	TranslationServer.set_locale('ru')
+	TranslationServer.set_locale('en')
 	randomize()
 
 func _on_Player_hit():

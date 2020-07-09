@@ -28,3 +28,9 @@ func _on_MessageTimer_timeout():
 func _on_StartButton_pressed():
 	$StartButton.hide()
 	emit_signal("start_game")
+
+func _on_LangRu_button_up():
+	TranslationServer.set_locale('ru')
+
+func _on_LangEn_button_up():
+	TranslationServer.set_locale('en')
