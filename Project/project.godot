@@ -32,6 +32,11 @@ window/stretch/aspect="keep"
 
 pointing/emulate_touch_from_mouse=true
 
+[locale]
+
+translations=PoolStringArray( "res://translations/translation.en.translation", "res://translations/translation.ru.translation" )
+locale_filter=[ 1, [ "en", "ru" ] ]
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

@@ -6,6 +6,7 @@ var score
 
 
 func _ready():
+	TranslationServer.set_locale('ru')
 	randomize()
 
 func _on_Player_hit():
@@ -27,7 +28,7 @@ func new_game():
 	$StartTimer.start()
 	
 	$HUD.update_score(score)
-	$HUD.show_message("Get Ready")
+	$HUD.show_message(tr("READY"))
 	
 	$Music.play()
 
