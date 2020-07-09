@@ -4,6 +4,7 @@ export (PackedScene) var Mob
 
 var score
 
+
 func _ready():
 	randomize()
 
@@ -45,12 +46,9 @@ func _on_MobTimer_timeout():
 	mob.linear_velocity = Vector2(rand_range(mob.min_speed, mob.max_speed), 0)
 	mob.linear_velocity = mob.linear_velocity.rotated(direction)
 
-
 func _on_ScoreTimer_timeout():
 	score += 1
-	
 	$HUD.update_score(score)
-
 
 func _on_StartTimer_timeout():
 	$MobTimer.start()

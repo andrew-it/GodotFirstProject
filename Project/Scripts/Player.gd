@@ -5,6 +5,7 @@ signal hit
 export var speed = 400  # px/sec
 var screen_size
 
+
 func start(pos):
 	position = pos
 	show()
@@ -15,15 +16,7 @@ func _ready():
 	hide()
 
 func _process(delta):
-	var velocity = Vector2()
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
-		velocity.y -= 1
+	var velocity = _getVelocityByInput()
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
@@ -43,6 +36,18 @@ func _process(delta):
 		$AnimatedSprite.animation = "up"
 		$AnimatedSprite.flip_v = velocity.y > 0
 
+func _getVelocityByInput():
+	var velocity = Vector2()
+	if Input.is_action_pressed("ui_right"):
+		velocity.x += 1
+	if Input.is_action_pressed("ui_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("ui_down"):
+		velocity.y += 1
+	if Input.is_action_pressed("ui_up"):
+		velocity.y -= 1
+		
+	return velocity
 
 func _on_Player_body_entered(body):
 	hide()
