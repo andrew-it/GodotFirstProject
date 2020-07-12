@@ -3,6 +3,7 @@ extends Node
 export (PackedScene) var Mob
 
 var score
+var livesCount
 
 
 func _ready():
@@ -10,11 +11,16 @@ func _ready():
 	randomize()
 
 func _on_Player_hit():
-	game_over()
+	livesCount -= 1
+	$HUD.update_lives_count(livesCount)
+	if livesCount <= 0:
+		game_over()
 
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
+	
+	$Player._onDeath()
 	
 	$HUD.show_game_over()
 	
@@ -24,11 +30,14 @@ func game_over():
 
 func new_game():
 	score = 0
+	livesCount = 3
+	
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	
 	$HUD.update_score(score)
 	$HUD.show_message(tr("READY"))
+	$HUD.update_lives_count(livesCount)
 	
 	$Music.play()
 

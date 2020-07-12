@@ -29,6 +29,9 @@ func _on_StartButton_pressed():
 	$StartButton.hide()
 	emit_signal("start_game")
 
+func update_lives_count(lives_count):
+	$HealthBar.update_health_bar(lives_count)
+
 func _on_LangRu_button_up():
 	TranslationServer.set_locale('ru')
 

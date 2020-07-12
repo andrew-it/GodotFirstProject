@@ -16,7 +16,7 @@ func _ready():
 	hide()
 
 func _process(delta):
-	var velocity = _getVelocityByInput()
+	var velocity = _get_velocity_by_input()
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
@@ -36,7 +36,7 @@ func _process(delta):
 		$AnimatedSprite.animation = "up"
 		$AnimatedSprite.flip_v = velocity.y > 0
 
-func _getVelocityByInput():
+func _get_velocity_by_input():
 	var velocity = Vector2()
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
@@ -49,7 +49,10 @@ func _getVelocityByInput():
 		
 	return velocity
 
-func _on_Player_body_entered(body):
+func _onDeath():
 	hide()
-	emit_signal("hit")
 	$CollisionShape2D.set_deferred("disabled", true)
+
+func _on_Player_body_entered(body):
+	emit_signal("hit")
+	

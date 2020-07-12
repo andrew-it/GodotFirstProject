@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://dodge_assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/HealthBar.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Heart.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -35,7 +37,8 @@ margin_bottom = 31.0
 text = "En"
 
 [node name="ScoreLabel" type="Label" parent="."]
-anchor_right = 1.0
+anchor_left = 0.000409698
+anchor_right = 1.00041
 margin_left = -7.62939e-06
 margin_top = 0.196655
 margin_bottom = 78.1967
@@ -77,6 +80,11 @@ __meta__ = {
 }
 
 [node name="MessageTimer" type="Timer" parent="."]
+
+[node name="HealthBar" type="Node2D" parent="."]
+position = Vector2( 198.148, 110.24 )
+script = ExtResource( 3 )
+Heart = ExtResource( 4 )
 [connection signal="button_up" from="LangRu" to="." method="_on_LangRu_button_up"]
 [connection signal="button_up" from="LangEn" to="." method="_on_LangEn_button_up"]
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
